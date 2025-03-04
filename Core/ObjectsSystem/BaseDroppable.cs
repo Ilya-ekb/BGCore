@@ -14,7 +14,8 @@ namespace Core.ObjectsSystem
         protected BaseDroppable(IDroppable parent)
         {
             this.parent = parent;
-            this.parent.Dropped += _ => Drop();
+            if (parent != null)
+                this.parent.Dropped += _ => Drop();
             Name = GetType().Name;
         }
 
@@ -27,7 +28,7 @@ namespace Core.ObjectsSystem
         {
             if (IsAlive)
                 return;
-            
+            IsAlive = true;
             OnAlive();
         }
 
@@ -35,7 +36,7 @@ namespace Core.ObjectsSystem
         {
             if (!IsAlive)
                 return;
-            
+            IsAlive = false;
             OnDrop();
         }
 
