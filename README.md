@@ -26,6 +26,12 @@ The Core Loop System is designed for modular game development, allowing you to m
 
 ## Getting Started
 
+Install the solution as a submodule in your project:
+
+```bash
+git submodule add https://github.com/Ilya-ekb/BGCore.git [path/to/submodules/folder]
+```
+
 To start using the Core Loop System, simply include the relevant namespaces in your project files:
 
 ```csharp
