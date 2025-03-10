@@ -96,7 +96,6 @@ public class MyDroppableObject : BaseDroppable
         base.OnAlive();
         // Additional logic on aliving
         Console.WriteLine($"{Name} has been alive.");
-         
     }
 
     protected override void OnDrop()
