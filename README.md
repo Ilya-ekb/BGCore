@@ -155,6 +155,7 @@ public class MyTimerUser : MonoBehaviour
 
     private void OnTimerReached(ITimer timer)
     {
+        timer.Drop(); // Drop the timer after period reached
         Debug.Log("Timer reached: " + timer.Period);
     }
 
