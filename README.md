@@ -141,7 +141,7 @@ droppableObject.Drop(); // The object will be dropped and invoke additional logi
 
 To create a loopable element, derive from `Loopable` or `ControlLoopable`, and implement the desired functionality. Register your actions using the `LoopOn` method, and manage your object's lifecycle by calling `SetAlive` or `Drop`.
 
-### Example Usage of a Timer
+### Example Usage of a Timer in Unity Engine
 
 ```csharp
 public class MyTimerUser : MonoBehaviour
