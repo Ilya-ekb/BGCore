@@ -58,7 +58,6 @@ Loops.Initiate();
 - **bool IsAlive**: Indicates whether the object is alive.
 - **event Action<IDroppable> Alived**: An event that is triggered when the object becomes alive.
 - **event Action<IDroppable> Dropped**: An event that is triggered when the object is dropped.
-- **TDroppable GetObject<TDroppable>()**: Returns an instance of the object in the specified type.
 - **void SetAlive()**: Sets the object to be alive.
 - **void Drop()**: Drops the object from the system.
 
@@ -91,6 +90,14 @@ Loops.Initiate();
 public class MyDroppableObject : BaseDroppable
 {
     public MyDroppableObject(IDroppable parent) : base(parent) { }
+
+    protected override void OnAlive()
+    {
+        base.OnAlive();
+        // Additional logic on aliving
+        Console.WriteLine($"{Name} has been alive.");
+         
+    }
 
     protected override void OnDrop()
     {
