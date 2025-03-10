@@ -1,6 +1,6 @@
-# Core Loop System Documentation
+# Base Game Core System Documentation
 
-Welcome to the Core Loop System! 🎉 This documentation provides an overview of the architecture, classes, and how to use them effectively in your projects. 
+Welcome to the Base Game Core System! This documentation provides an overview of the architecture, classes, and how to use them effectively in your projects. 
 
 ## Table of Contents
 
@@ -22,7 +22,7 @@ Welcome to the Core Loop System! 🎉 This documentation provides an overview of
 
 ## Overview
 
-The Core Loop System is designed for modular game development, allowing you to manage loops and timed events efficiently. The system provides an easy way to create loopable elements and handle timing events, making it ideal for game logic, animations, and timed actions.
+The Base Game Core System is designed for modular game development, allowing you to manage loops and timed events efficiently. The system provides an easy way to create loopable elements and handle timing events, making it ideal for game logic, animations, and timed actions.
 
 ## Getting Started
 
@@ -32,7 +32,7 @@ Install the solution as a submodule in your project:
 git submodule add https://github.com/Ilya-ekb/BGCore.git [path/to/submodules/folder]
 ```
 
-To start using the Core Loop System, simply include the relevant namespaces in your project files:
+To start using the Base Game Core System, simply include the relevant namespaces in your project files:
 
 ```csharp
 using Core.Entities.Loopables;
