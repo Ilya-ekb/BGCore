@@ -108,7 +108,7 @@ public class MyDroppableObject : BaseDroppable
 // Usage
 var parentObject = new SomeMainDroppable(); // Example parent
 var droppableObject = new MyDroppableObject(parentObject);
-droppableObject.SetAlive(); // The object becomes alive
+droppableObject.SetAlive(); // The object becomes alive and invoke additional logic
 droppableObject.Drop(); // The object will be dropped and invoke additional logic
 ```
 
