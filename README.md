@@ -117,6 +117,31 @@ droppableObject.Drop(); // The object will be dropped and invoke additional logi
 
 `CoreLoop` is the main class responsible for executing all loopable actions. It manages adding and removing loopables, as well as executing their respective actions each frame.
 
+### Example Usage in Unity Engine
+
+```csharp
+
+    public class Bootstrap : MonoBehaviour
+    {
+        public static bool IsAwake { get; private set; }
+        [SerializeField] private int targetFPS = 60;
+        
+        private void Awake() => Loops.Initiate();
+  
+        private void Update()
+        {
+            CoreLoopService.Execute(Loops.Timer);
+            CoreLoopService.Execute(Loops.Update);
+        }
+
+        private void FixedUpdate() => CoreLoopService.Execute(Loops.FixedUpdate);
+
+        private void LateUpdate() => CoreLoopService.Execute(Loops.LateUpdate);
+
+        private void OnDestroy() => Loops.Dispose();
+    }    
+```
+
 ### Loopable
 
 `Loopable` serves as the base class for any object that can be added to a loop. This class provides methods to register actions, define execution orders, and manage their lifecycle.
@@ -124,6 +149,7 @@ droppableObject.Drop(); // The object will be dropped and invoke additional logi
 ### ControlLoopable
 
 `ControlLoopable` extends `Loopable` and implements `IControllable`, providing control over its activation, deactivation, pausing, and playing states. This class is useful for elements that require more intricate control.
+
 
 ### Timer
 
@@ -190,4 +216,4 @@ Refer to the examples provided in the `Examples` folder within the source code f
 
 ## Contributing
 
-Feel free to contribute to the Core Loop System! Fork the repository, make changes, and submit a pull request. Any feedback or improvements are welcome to enhance user experience.
+Feel free to contribute to the Base Game Core System! Fork the repository, make changes, and submit a pull request. Any feedback or improvements are welcome to enhance user experience.
