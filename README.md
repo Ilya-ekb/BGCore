@@ -75,7 +75,6 @@ Loops.Initiate();
 
 #### Main Methods:
 
-- **TDroppable GetObject<TDroppable>()**: Implements logic to retrieve an object of the specified type.
 - **void SetAlive()**: Marks the object as alive and raises the `Alived` event.
 - **void Drop()**: Performs the drop operation on the object and raises the `Dropped` event.
 
