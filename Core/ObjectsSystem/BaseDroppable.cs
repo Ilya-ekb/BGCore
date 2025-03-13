@@ -19,11 +19,6 @@ namespace Core.ObjectsSystem
             Name = GetType().Name;
         }
 
-        public virtual TDroppable GetObject<TDroppable>()
-        {
-            return this is TDroppable result ? result : default;
-        }
-
         public void SetAlive()
         {
             if (IsAlive)
