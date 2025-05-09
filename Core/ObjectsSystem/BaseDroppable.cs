@@ -9,7 +9,7 @@ namespace Core.ObjectsSystem
         public event Action<IDroppable> Alived;
         public event Action<IDroppable> Dropped;
 
-        protected readonly IDroppable parent;
+        protected IDroppable parent;
 
         protected BaseDroppable(IDroppable parent)
         {
@@ -25,6 +25,11 @@ namespace Core.ObjectsSystem
                 return;
             IsAlive = true;
             OnAlive();
+        }
+
+        public void SetParent(IDroppable droppable)
+        {
+            parent = droppable;
         }
 
         public void Drop()
