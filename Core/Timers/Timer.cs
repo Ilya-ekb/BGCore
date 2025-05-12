@@ -33,6 +33,7 @@ namespace Core.Timers
 
         public void Play()
         {
+            if(!IsAlive) SetAlive();
             IsPlaying = true;
         }
 
