@@ -22,6 +22,7 @@ namespace Core
 
         protected DiProperty()
         {
+            value = default;
             actionsForAdd = new Dictionary<Action<T>, Action<T>>();
             actions = new Dictionary<Action<T>, Action<T>>();
             actionsForRemove = new Dictionary<Action<T>, Action<T>>();
@@ -48,6 +49,11 @@ namespace Core
         public void UnsubscribeAll()
         {
             actions.Clear();
+        }
+
+        public void Reset()
+        {
+            Value = default;
         }
 
         private void CallAllActions()
