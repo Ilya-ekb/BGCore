@@ -54,17 +54,17 @@ namespace Core.Timers
             value = 0;
         }
 
-        public void AddHandler(Action<object> onReachedPeriodAction)
+        public void AddHandler(Action<ITimer> onReachedPeriodAction)
         {
             onReachedPeriod += onReachedPeriodAction;
         }
 
-        public void RemoveHandler(Action<object> onReachedPeriodAction)
+        public void RemoveHandler(Action<ITimer> onReachedPeriodAction)
         {
             onReachedPeriod -= onReachedPeriodAction;
         }
 
-        public void SetHandler(Action<object> onReachedPeriodAction)
+        public void SetHandler(Action<ITimer> onReachedPeriodAction)
         {
             onReachedPeriod = onReachedPeriodAction;
         }

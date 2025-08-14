@@ -12,9 +12,9 @@ namespace Core.Timers
         void Pause();
         void Stop(bool withTickReached = false);
 
-        void AddHandler(Action<object> onTickAction);
-        void RemoveHandler(Action<object> onTickAction);
-        void SetHandler(Action<object> onTickAction);
+        void AddHandler(Action<ITimer> onTickAction);
+        void RemoveHandler(Action<ITimer> onTickAction);
+        void SetHandler(Action<ITimer> onTickAction);
         void SetPeriod(float period);
         void AddPeriod(float step);
     }
