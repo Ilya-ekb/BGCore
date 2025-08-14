@@ -104,7 +104,7 @@ namespace Core.Timers
             }
 
             value += deltaTime;
-            OnTimerTick?.Invoke(new TimerArgs(this, value, Period));
+            OnTimerTick?.Invoke(new TimerArgs(this, value, Period, deltaTime));
         }
 
         protected override void OnDrop()

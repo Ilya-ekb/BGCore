@@ -34,11 +34,13 @@ namespace Core.LoopSystem
 
         private readonly LoopSession session;
         private long Now => DateTime.Now.Ticks;
-        private float DeltaTime => TimeSpan.FromTicks(Now - lastTick).Milliseconds / 1000.0f; 
+        private float DeltaTime => (float)(deltaTicks.TotalSeconds - deltaTicks.Seconds);
+        
+        private TimeSpan deltaTicks => TimeSpan.FromTicks(Now - lastTick);
         private long lastTick;
         public CoreLoop(int type)
         {
-            comparer = new InnerComparer(type);
+            comparer = new InnerComparer(type); 
             loopType = type;
             session = new LoopSession();
             lastTick = Now;
