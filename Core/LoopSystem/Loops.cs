@@ -22,6 +22,7 @@ namespace Core.LoopSystem
         public static void Dispose()
         {
             CoreLoopService.ClearLoops();
+            GEvent.ClearActions();
         }
     }
 }

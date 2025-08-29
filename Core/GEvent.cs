@@ -120,5 +120,10 @@ namespace Core
 
             return true;
         }
+
+        public static void ClearActions()
+        {
+            actions.Clear();
+        }
     }
 }
