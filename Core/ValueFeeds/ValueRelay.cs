@@ -1,7 +1,7 @@
 using System;
 using Core;
 
-namespace BGCore.Samples.ValueFeeds
+namespace BGCore.ValueFeeds
 {
     public sealed class ValueRelay<T> : IDisposable
     {

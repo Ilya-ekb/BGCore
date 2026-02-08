@@ -1,5 +1,6 @@
 using System;
 using Core.ObjectsSystem;
+using BGCore.ValueFeeds
 using UnityEngine.Localization;
 
 namespace BGCore.Samples.ValueFeeds

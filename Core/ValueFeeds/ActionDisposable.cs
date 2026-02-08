@@ -1,6 +1,6 @@
 using System;
 
-namespace BGCore.Samples.ValueFeeds
+namespace BGCore.ValueFeeds
 {
     public sealed class ActionDisposable : IDisposable
     {
