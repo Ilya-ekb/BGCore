@@ -1,7 +1,9 @@
 {
-  "name": "BGCore.ValueFeeds",
+  "name": "BG.VContainer.LoopSystemAdapter",
   "references": [
-    "BGCore"
+    "BG",
+    "VContainer",
+    "VContainer.Unity"
   ],
   "optionalUnityReferences": [],
   "includePlatforms": [],

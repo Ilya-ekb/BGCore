@@ -1,11 +1,10 @@
 {
-  "name": "BGCore.ValueFeedsSamples",
+  "name": "BG.ValueFeeds.TMP",
   "rootNamespace": "",
   "references": [
     "Unity.TextMeshPro",
-    "Unity.Localization",
-    "BGCore",
-    "BGCore.ValueFeeds"
+    "BG.ValueFeeds",
+    "BG.ValueFeeds.Localization"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

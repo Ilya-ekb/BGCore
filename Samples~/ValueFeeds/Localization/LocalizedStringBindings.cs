@@ -1,8 +1,9 @@
 using System;
+using BGCore.ValueFeeds;
 using Core.ObjectsSystem;
 using UnityEngine.Localization;
 
-namespace BGCore.ValueFeeds
+namespace BGCore.Samples.ValueFeeds
 {
     public static class LocalizedStringBindings
     {

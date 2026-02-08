@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BGCore.ValueFeeds;
 using UnityEngine.UIElements;
 
 namespace BGCore.Samples.ValueFeeds

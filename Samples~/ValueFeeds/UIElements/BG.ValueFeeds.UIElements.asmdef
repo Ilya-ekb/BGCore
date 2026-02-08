@@ -1,0 +1,17 @@
+{
+  "name": "BG.ValueFeeds.UIElements",
+  "references": [
+    "BG.ValueFeeds",
+    "BG.ValueFeeds.Localization"
+  ],
+  "optionalUnityReferences": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

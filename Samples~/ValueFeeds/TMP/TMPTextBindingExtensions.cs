@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using BGCore.ValueFeeds
 using TMPro;
+using BGCore.ValueFeeds;
 
 namespace BGCore.Samples.ValueFeeds
 {

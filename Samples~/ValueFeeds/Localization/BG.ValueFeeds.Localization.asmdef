@@ -1,9 +1,9 @@
 {
-  "name": "BGCore.VContainerSamples",
+  "name": "BG.ValueFeeds.Localization",
   "references": [
-    "BGCore",
-    "VContainer",
-    "VContainer.Unity"
+    "BG",
+    "BG.ValueFeeds",
+    "Unity.Localization"
   ],
   "optionalUnityReferences": [],
   "includePlatforms": [],
