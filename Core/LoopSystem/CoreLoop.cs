@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Core.Entities.Loopables;
 
 namespace Core.LoopSystem
@@ -33,17 +34,17 @@ namespace Core.LoopSystem
         private uint behaviourOrder;
 
         private readonly LoopSession session;
-        private long Now => DateTime.Now.Ticks;
-        private float DeltaTime => (float)(deltaTicks.TotalSeconds - deltaTicks.Seconds);
-        
-        private TimeSpan deltaTicks => TimeSpan.FromTicks(Now - lastTick);
-        private long lastTick;
+        private static readonly double TickToSeconds = 1.0 / Stopwatch.Frequency;
+        private long lastTimestamp;
+
+        private readonly List<Action> actionsBuffer = new List<Action>(8);
+        private readonly List<Loopable> newLoopsBuffer = new List<Loopable>(8);
         public CoreLoop(int type)
         {
             comparer = new InnerComparer(type); 
             loopType = type;
             session = new LoopSession();
-            lastTick = Now;
+            lastTimestamp = Stopwatch.GetTimestamp();
         }
 
         public void ExecuteAllEvents()
@@ -96,6 +97,8 @@ namespace Core.LoopSystem
 
         private void InnerCall(List<Loopable> loopables, LoopSession session)
         {
+            var now = Stopwatch.GetTimestamp();
+            var deltaTime = (float)((now - lastTimestamp) * TickToSeconds);
             for (var i = 0; i < loopables.Count; i++)
             {
                 if (session.Destroyed)
@@ -103,9 +106,9 @@ namespace Core.LoopSystem
 
                 var current = loopables[i];
                 if (current.CallActions)
-                    current.GetAction(loopType)?.Invoke(DeltaTime);
+                    current.GetAction(loopType)?.Invoke(deltaTime);
             }
-            lastTick = Now;
+            lastTimestamp = now;
         }
 
         private void InnerRemove(Loopable behaviour)
@@ -123,23 +126,25 @@ namespace Core.LoopSystem
             if (session.ActionsCount is 0)
                 return;
 
-            List<Action> actions;
             lock (session.SyncRoot)
             {
                 if (session.ActionsCount is 0)
                     return;
 
-                actions = new List<Action>(session.Actions);
+                actionsBuffer.Clear();
+                actionsBuffer.AddRange(session.Actions);
                 session.ActionsCount = 0;
                 session.Actions.Clear();
             }
 
-            foreach (var action in actions)
+            for (var i = 0; i < actionsBuffer.Count; i++)
             {
                 if (session.Destroyed)
                     return;
-                action();
+                actionsBuffer[i]?.Invoke();
             }
+
+            actionsBuffer.Clear();
         }
 
 
@@ -159,19 +164,19 @@ namespace Core.LoopSystem
 
             if (session.ForAdd.Count > 0)
             {
-                var newLoops = new List<Loopable>();
+                newLoopsBuffer.Clear();
 
                 foreach (var loopable in session.ForAdd)
                 {
                     session.Process.Add(loopable);
 
                     if (loopable.CallActions && loopable.CallWhenAdded)
-                        newLoops.Add(loopable);
+                        newLoopsBuffer.Add(loopable);
                     loopable.SetOrder(loopType, behaviourOrder++);
                 }
 
                 session.ForAdd.Clear();
-                return newLoops;
+                return newLoopsBuffer;
             }
 
             return null;

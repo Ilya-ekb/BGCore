@@ -1,4 +1,5 @@
 using System;
+using System.Buffers;
 using System.Collections.Generic;
 using Core.ObjectsSystem;
 using Game.Networks;
@@ -110,12 +111,21 @@ namespace Core
                 return true;
             }
 
-            var copy = new Action<object[]>[actionsList.Count];
-            actionsList.Values.CopyTo(copy, 0);
-
-            foreach (var action in copy)
+            var count = actionsList.Count;
+            var pool = ArrayPool<Action<object[]>>.Shared;
+            var copy = pool.Rent(count);
+            try
             {
-                action(objects);
+                actionsList.Values.CopyTo(copy, 0);
+                for (var i = 0; i < count; i++)
+                {
+                    copy[i]?.Invoke(objects);
+                }
+            }
+            finally
+            {
+                Array.Clear(copy, 0, count);
+                pool.Return(copy);
             }
 
             return true;

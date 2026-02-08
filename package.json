@@ -13,5 +13,12 @@
   "author": {
     "name": "@oPlayI",
     "email": "2190055@gmail.com"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "VContainer Loop System Adapter",
+      "description": "Adapter that initializes LoopSystem and executes loops via VContainer ticks.",
+      "path": "Samples~/VContainer"
+    }
+  ]
 }

@@ -25,6 +25,7 @@ namespace Core.Timers
             Period = period;
             onReachedPeriod = onReachedPeriodAction;
             invokeOnce = once;
+            this.playOnAwake = playOnAwake;
 
             if (!playOnAwake) return;
             SetAlive();

@@ -40,9 +40,8 @@ namespace Game.Networks
 
         private void OnUpdate(float deltaTime)
         {
-            while (events.Count > 0)
-                if(events.TryDequeue(out var action))
-                    action?.Invoke();
+            while (events.TryDequeue(out var action))
+                action?.Invoke();
         }
     }
 }

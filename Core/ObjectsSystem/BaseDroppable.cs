@@ -15,7 +15,7 @@ namespace Core.ObjectsSystem
         {
             this.parent = parent;
             if (parent != null)
-                this.parent.Dropped += _ => Drop();
+                this.parent.Dropped += OnParentDropped;
             Name = GetType().Name;
         }
 
@@ -52,6 +52,11 @@ namespace Core.ObjectsSystem
             Dropped?.Invoke(this);
             Alived = null;
             Dropped = null;
+        }
+
+        private void OnParentDropped(IDroppable _)
+        {
+            Drop();
         }
     }
 }

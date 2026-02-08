@@ -1,17 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using Core.LoopSystem;
 using Core.Timers;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Core
 {
     public static class Scheduler
     {
-        private static MonoBehaviour instance;
+        private static SchedulerBehaviour instance;
         private static List<ITimer> delayTimers = new List<ITimer>();
         
         public static void Invoke(Action action, float delay = 0)
@@ -38,7 +38,7 @@ namespace Core
             {
                 while (!condition.Invoke())
                 {
-
+                    Thread.Sleep(1);
                 }
             });
             action.Invoke();
@@ -47,7 +47,7 @@ namespace Core
         public static void InvokeWhen(Func<bool> condition, Action action)
         {
             if (!instance)
-                instance = new GameObject(nameof(Scheduler)).AddComponent<Mask>();
+                instance = new GameObject(nameof(Scheduler)).AddComponent<SchedulerBehaviour>();
             instance.StartCoroutine(ConditionUntil(action, condition));
         }
 
@@ -56,6 +56,10 @@ namespace Core
             yield return new WaitUntil(condition.Invoke);
             yield return new WaitForEndOfFrame();
             action?.Invoke();
+        }
+
+        private sealed class SchedulerBehaviour : MonoBehaviour
+        {
         }
     }
 }

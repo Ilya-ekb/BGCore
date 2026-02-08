@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Core.ObjectsSystem;
 
 namespace Core.Timers
 {
@@ -11,10 +12,7 @@ namespace Core.Timers
         {
             var timer = new Timer(updateType, period, onReachedPeriodAction, playOnAwake, invokeOnce);
 
-            timer.Dropped += (d) =>
-            {
-                allTimers.Remove(timer);
-            };
+            timer.Dropped += OnTimerDropped;
 
             allTimers.Add(timer);
 
@@ -23,18 +21,27 @@ namespace Core.Timers
 
         public static void StopAll()
         {
-            allTimers.ForEach(t => t.Stop());
+            for (var i = 0; i < allTimers.Count; i++)
+                allTimers[i].Stop();
             allTimers.Clear();
         }
 
         public static void PlayALl()
         {
-            allTimers.ForEach(t => t.Play());
+            for (var i = 0; i < allTimers.Count; i++)
+                allTimers[i].Play();
         }
 
         public static void PauseAll()
         {
-            allTimers.ForEach(t => t.Pause());
+            for (var i = 0; i < allTimers.Count; i++)
+                allTimers[i].Pause();
+        }
+
+        private static void OnTimerDropped(IDroppable droppable)
+        {
+            if (droppable is ITimer timer)
+                allTimers.Remove(timer);
         }
     }
 }
