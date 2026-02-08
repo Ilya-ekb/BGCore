@@ -224,7 +224,22 @@ private void MyEventHandler(object[] data)
 
 Samples are located in the `Samples~` folder:
 - `VContainer` — Loop System adapter for VContainer ticks.
-- `ValueFeeds` — TMP_Text and LocalizedString bindings using ValueRelay/ValueFeed.
+- `ValueFeeds` — TMP_Text, UI Toolkit `Label` and LocalizedString bindings using ValueRelay/ValueFeed.
+
+### ValueFeeds usage
+
+```csharp
+using BGCore.Samples.ValueFeeds;
+using TMPro;
+using UnityEngine.UIElements;
+
+var relay = new ValueRelay<string>("Hello");
+TMP_Text tmp = /* ... */;
+Label label = /* ... */;
+
+tmp.SetTextSource(relay.Feed);
+label.SetTextSource(relay.Feed);
+```
 
 ## Contributing
 
