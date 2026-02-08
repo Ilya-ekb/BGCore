@@ -222,7 +222,9 @@ private void MyEventHandler(object[] data)
 
 ## Examples
 
-Refer to the examples provided in the `Examples` folder within the source code for practical implementations of timers, loops, and events.
+Samples are located in the `Samples~` folder:
+- `VContainer` — Loop System adapter for VContainer ticks.
+- `ValueFeeds` — TMP_Text and LocalizedString bindings using ValueRelay/ValueFeed.
 
 ## Contributing
 

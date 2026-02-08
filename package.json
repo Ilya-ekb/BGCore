@@ -1,6 +1,6 @@
 {
   "name": "com.deepheadgames.bgcore",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "displayName": "Base Game Core",
   "description": "Modular core system for game loops, timers, and events.",
   "unity": "2021.3",
@@ -19,6 +19,11 @@
       "displayName": "VContainer Loop System Adapter",
       "description": "Adapter that initializes LoopSystem and executes loops via VContainer ticks.",
       "path": "Samples~/VContainer"
+    },
+    {
+      "displayName": "ValueFeeds Bindings",
+      "description": "Sample bindings for TMP_Text and LocalizedString using ValueFeed/ValueRelay.",
+      "path": "Samples~/ValueFeeds"
     }
   ]
 }
