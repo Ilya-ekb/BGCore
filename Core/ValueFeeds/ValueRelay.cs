@@ -65,7 +65,7 @@ namespace BGCore.ValueFeeds
             onDispose = null;
         }
 
-        internal void Unsubscribe(Action<T> handler)
+        public void Unsubscribe(Action<T> handler)
         {
             if (handler == null)
                 return;
@@ -73,7 +73,7 @@ namespace BGCore.ValueFeeds
             property.Unsubscribe(handler);
         }
 
-        internal void RegisterDispose(Action action)
+        public void RegisterDispose(Action action)
         {
             if (action == null)
                 return;
