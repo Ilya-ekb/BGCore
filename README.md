@@ -32,6 +32,16 @@ Install the solution as a submodule in your project:
 git submodule add https://github.com/Ilya-ekb/BGCore.git [path/to/submodules/folder]
 ```
 
+Install via Unity Package Manager (Add package from Git URL):
+
+1. Open **Window → Package Manager**.
+2. Click **+** and choose **Add package from git URL...**.
+3. Paste:
+
+```
+https://github.com/Ilya-ekb/BGCore.git#upm
+```
+
 To start using the Base Game Core System, simply include the relevant namespaces in your project files:
 
 ```csharp

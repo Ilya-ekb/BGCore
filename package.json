@@ -1,0 +1,17 @@
+{
+  "name": "com.deepheadgames.bgcore",
+  "version": "0.1.0",
+  "displayName": "Base Game Core",
+  "description": "Modular core system for game loops, timers, and events.",
+  "unity": "2021.3",
+  "keywords": [
+    "core",
+    "loops",
+    "timers",
+    "events"
+  ],
+  "author": {
+    "name": "@oPlayI",
+    "email": "2190055@gmail.com"
+  }
+}
