@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace Core
 {
-    sealed class CompositeDisposable : IDisposable
+    public sealed class CompositeDisposable : IDisposable
     {
         readonly Stack<IDisposable> disposables = new Stack<IDisposable>();
 
